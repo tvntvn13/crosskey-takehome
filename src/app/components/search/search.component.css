@@ -1,0 +1,64 @@
+.header {
+  position: fixed;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--card-bg);
+  z-index: 2;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.search-container button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 3px;
+}
+
+.search-container button:hover {
+  transform: scale(1.07);
+  color: var(--white);
+}
+
+.search-container button:focus {
+  outline: 1px solid var(--secondary);
+  border-radius: 10px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 700px;
+  min-width: 300px;
+  background-color: var(--body-bg);
+  border: 1px solid var(--secondary);
+  padding: 7px 12px;
+  border-radius: 10px;
+  box-shadow: none;
+  outline: none;
+  color: var(--white);
+}
+
+.search-bar:focus, .search-bar:hover {
+  outline: 1px solid var(--neutral-color);
+  border-radius: 10px;
+}
+
+@media screen and (width < 500px) {
+  .search-container {
+    min-width: 90vw;
+  }
+
+  .search-bar {
+    min-width: 150px;
+  }
+}

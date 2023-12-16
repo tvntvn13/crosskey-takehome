@@ -1,0 +1,71 @@
+<section class="fund-card" (click)="toggleCard(); $event.stopPropagation()" [ngClass]="{'pointer': !isExpanded }">
+  <div class="fund-text">
+    <div class="fund-name">
+      {{ fund.fundName }}
+    </div>
+  </div>
+  <div class="fund-numbers">
+    <div class="change 1m">
+      <p>1mo</p>
+      <div
+        [ngClass]="{'positive': fund.change1m >= 0, 'negative': fund.change1m < 0, 'neutral': fund.change1m === null }">
+        {{ fund.change1m > 0 ? '+' + fund.change1m : fund.change1m || '-'}}{{fund.change1m ? '%' : ''}}
+      </div>
+    </div>
+    <div class="change 3m">
+      <p>3mos</p>
+      <div
+        [ngClass]="{'positive': fund.change3m >= 0, 'negative': fund.change3m < 0, 'neutral': fund.change1m === null }">
+        {{ fund.change3m > 0 ? '+' + fund.change3m : fund.change3m || '-'}}{{fund.change3m ? '%' : ''}}
+      </div>
+    </div>
+    <div class="change 1y">
+      <p>1yr</p>
+      <div
+        [ngClass]="{'positive': fund.change1y >= 0, 'negative': fund.change1y < 0, 'neutral': fund.change1m === null }">
+        {{ fund.change1y > 0 ? '+' + fund.change1y: fund.change1y || '-'}}{{fund.change1y ? '%' : ''}}
+      </div>
+    </div>
+    <div class="change 3y">
+      <p>3yrs</p>
+      <div
+        [ngClass]="{'positive': fund.change3y >= 0, 'negative': fund.change3y < 0, 'neutral': fund.change1m === null }">
+        {{ fund.change3y > 0 ? '+' + fund.change3y: fund.change3y || '-'}}{{fund.change3y ? '%' : ''}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isExpanded">
+    <div class="additional-info">
+      <div class="additional-text">
+        <div class="fund-company">
+          {{ fund.fundCompany }}
+        </div>
+        <div class="fund-type">
+          {{ fund.fundType }}
+        </div>
+      </div>
+      <div class="fund-price">
+        <h4 id="price">{{ fund.rate }}</h4>
+        <h4>{{ fund.currency }}</h4>
+      </div>
+    </div>
+    <div class="low-high">
+      <div>
+        <p>Year low: <span>{{ fund.yearLow ? fund.yearLow : '-' }}</span></p>
+      </div>
+      <div>
+        <p>Year high: <span>{{ fund.yearHigh ? fund.yearHigh : '-' }}</span></p>
+      </div>
+    </div>
+    <ng-container *ngIf="hasValidDocument()">
+      <div class="document-container">
+        More info:
+      </div>
+      <ng-container *ngFor="let document of fund.documents">
+        <div class="document-link" *ngIf="document.url && document.title">
+          <a [href]="document.url" target="_blank">{{ document.title }}</a>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</section>

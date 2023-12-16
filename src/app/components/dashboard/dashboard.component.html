@@ -1,0 +1,13 @@
+<app-search (search)="onSearchChange($event)"></app-search>
+<main class="container">
+  <ng-container *ngIf="(noResultsFound$ | async)">
+    <div class="no-results">
+      <h2>No results for '{{ searchTerm }}'</h2>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="(data$ | async) as response">
+    <ng-container *ngFor="let fund of response.data">
+      <app-fund-card [fund]="fund"></app-fund-card>
+    </ng-container>
+  </ng-container>
+</main>

@@ -8,6 +8,13 @@ export interface Fund {
   fundName: string;
   fundType: string;
   fundCompany: string;
+  rate: number;
+  documents: Document[];
   yearHigh: number;
   yearLow: number;
+}
+
+export interface Document {
+  title: string;
+  url: string;
 }

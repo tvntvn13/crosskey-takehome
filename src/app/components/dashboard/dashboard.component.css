@@ -1,0 +1,24 @@
+.container {
+  padding-top: calc(100px + 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 10px;
+  transition: all 0.3s ease-out;
+  padding-bottom: 2rem;
+}
+
+.no-results {
+  display: flex;
+  height: calc(100vh - 100px);
+  width: 100vw;
+  padding-top: 20vh;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.no-results h2 {
+  color: var(--secondary);
+}
