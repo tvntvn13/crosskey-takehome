@@ -21,9 +21,22 @@ export class DashboardComponent implements OnInit {
   expandedCardId: string | null = null;
   searchTerm = '';
   noResultsFound$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  //eslint-disable-next-line
+  debouncedSearchChange: any;
+
+  constructor() {
+    this.debouncedSearchChange = this.dataService.debounce(
+      this.onSearchChange.bind(this),
+      300,
+    );
+  }
 
   ngOnInit(): void {
-    this.data$ = this.dataService.getData().pipe(
+    this.data$ = this.fetchData();
+  }
+
+  fetchData(): Observable<ApiResponseObject> {
+    return this.dataService.getData().pipe(
       takeUntilDestroyed(this.destroyRef),
       map((responseArray: ApiResponseArray) => {
         const responseData = responseArray[0].data;
@@ -37,7 +50,11 @@ export class DashboardComponent implements OnInit {
 
   onSearchChange(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    this.ngOnInit();
+    this.data$ = this.fetchData();
+  }
+
+  onSearchTermChange(searchTerm: string): void {
+    this.debouncedSearchChange(searchTerm);
   }
 
   filterFundsAndCheckIfResults(funds: Fund[]): Fund[] {

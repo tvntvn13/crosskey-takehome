@@ -51,19 +51,19 @@
     </div>
     <div class="low-high">
       <div>
-        <p>Year low: <span>{{ fund.yearLow ? fund.yearLow : '-' }}</span></p>
+        <p>Year low: <span>{{ formatYearHighAndLow(fund, true) }}</span></p>
       </div>
       <div>
-        <p>Year high: <span>{{ fund.yearHigh ? fund.yearHigh : '-' }}</span></p>
+        <p>Year high: <span>{{ formatYearHighAndLow(fund) }}</span></p>
       </div>
     </div>
     <ng-container *ngIf="hasValidDocument()">
       <div class="document-container">
-        More info:
+        Information:
       </div>
       <ng-container *ngFor="let document of fund.documents">
         <div class="document-link" *ngIf="document.url && document.title">
-          <a [href]="document.url" target="_blank">{{ document.title }}</a>
+          <a [href]="document.url" target="_blank" (click)="$event.stopPropagation()">{{ document.title }}</a>
         </div>
       </ng-container>
     </ng-container>

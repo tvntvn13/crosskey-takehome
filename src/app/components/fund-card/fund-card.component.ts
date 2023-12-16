@@ -20,6 +20,12 @@ export class FundCardComponent {
     this.isExpanded = false;
   }
 
+  formatYearHighAndLow(fund: Fund, low = false): string {
+    if (!fund.yearLow && !fund.yearHigh) return '-';
+    if (low && fund.yearLow) return `${fund.yearLow} ${fund.currency}`;
+    return `${fund.yearHigh} ${fund.currency}`;
+  }
+
   hasValidDocument(): boolean {
     return this?.fund?.documents.some((document) =>
       document.url && document.title

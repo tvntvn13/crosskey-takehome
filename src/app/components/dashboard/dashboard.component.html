@@ -1,4 +1,4 @@
-<app-search (search)="onSearchChange($event)"></app-search>
+<app-search (search)="onSearchTermChange($event)"></app-search>
 <main class="container">
   <ng-container *ngIf="(noResultsFound$ | async)">
     <div class="no-results">

@@ -100,9 +100,10 @@
   color: var(--secondary);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 7px;
-  max-width: 60%;
+  max-width: 100%;
+  gap: 1rem;
 }
 
 .low-high span {
