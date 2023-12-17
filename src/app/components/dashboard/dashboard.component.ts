@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   constructor() {
     this.debouncedSearchChange = this.dataService.debounce(
       this.onSearchChange.bind(this),
-      300,
+      500,
     );
   }
 
@@ -66,9 +66,11 @@ export class DashboardComponent implements OnInit {
 
   filterFunds(fund: Fund): boolean {
     if (!this.searchTerm) return true;
-    const term = this.searchTerm.toLowerCase();
-    return fund.fundName?.toLowerCase().includes(term) ||
+    const searchWords = this.searchTerm.trim().toLowerCase().split(' ');
+    return searchWords.every((term) =>
+      fund.fundName?.toLowerCase().includes(term) ||
       fund.fundCompany?.toLowerCase().includes(term) ||
-      fund.fundType?.toLowerCase().includes(term);
+      fund.fundType?.toLowerCase().includes(term)
+    );
   }
 }
