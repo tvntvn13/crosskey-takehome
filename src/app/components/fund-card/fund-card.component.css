@@ -143,10 +143,12 @@
 @media screen and (width < 620px){
   .fund-card {
     width: 90vw;
-    font-size: .7rem;
+    font-size: .9rem;
   }
+}
 
-  .fund-name {
-    font-size: .8rem;
+@media screen and (width < 420px){
+  .fund-card {
+    width: 96vw;
   }
 }

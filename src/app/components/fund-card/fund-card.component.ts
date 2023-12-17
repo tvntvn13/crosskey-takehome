@@ -22,8 +22,10 @@ export class FundCardComponent {
 
   formatYearHighAndLow(fund: Fund, low = false): string {
     if (!fund.yearLow && !fund.yearHigh) return '-';
-    if (low && fund.yearLow) return `${fund.yearLow} ${fund.currency}`;
-    return `${fund.yearHigh} ${fund.currency}`;
+    if (low && fund.yearLow) {
+      return `${fund.yearLow.toFixed(2)} ${fund.currency}`;
+    }
+    return `${fund.yearHigh.toFixed(2)} ${fund.currency}`;
   }
 
   hasValidDocument(): boolean {

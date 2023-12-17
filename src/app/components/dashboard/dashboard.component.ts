@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   data$: Observable<ApiResponseObject | null> = of(null);
-  expandedCardId: string | null = null;
   searchTerm = '';
   noResultsFound$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   //eslint-disable-next-line
