@@ -2,7 +2,7 @@
   <div class="search-container">
     <input type="text" name="search-bar" class="search-bar" maxlength="100" [(ngModel)]="searchTerm"
       placeholder="Search..." (input)="onSearch($event)" autocomplete="on" />
-    <button (click)="resetSearch()" name="refresh">
+    <button (click)="resetSearch()" name="refresh" aria-label="Refresh">
       <i class="fa fa-refresh"></i>
     </button>
   </div>
