@@ -20,6 +20,13 @@ export class FundCardComponent {
     this.isExpanded = false;
   }
 
+  handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.toggleCard();
+    }
+  }
+
   formatYearHighAndLow(fund: Fund, low = false): string {
     if (!fund.yearLow && !fund.yearHigh) return '-';
     if (low && fund.yearLow) {
@@ -29,8 +36,8 @@ export class FundCardComponent {
   }
 
   hasValidDocument(): boolean {
-    return this?.fund?.documents.some((document) =>
-      document.url && document.title
+    return this.fund?.documents.some(
+      (document) => document.url && document.title,
     );
   }
 }
